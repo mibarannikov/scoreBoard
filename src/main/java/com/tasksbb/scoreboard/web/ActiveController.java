@@ -5,6 +5,7 @@ import com.tasksbb.scoreboard.service.ActiveService;
 import com.tasksbb.scoreboard.service.StationService;
 import com.tasksbb.scoreboard.service.TrainService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -17,12 +18,11 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @PreAuthorize("permitAll()")
 @RequiredArgsConstructor
+@Slf4j
 public class ActiveController {
-    public static final Logger LOG = LoggerFactory.getLogger(ActiveController.class);
+
     private final StationService stationService;
     private final TrainService trainService;
-
-
 
     @GetMapping("/stations")
       public ResponseEntity<Object> getStations(@RequestParam(name = "value") String nameStation){
